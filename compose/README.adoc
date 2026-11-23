@@ -1,0 +1,81 @@
+= Docker Compose
+
+> Branch: `compose` +
+> Fenrir ID: `compose` +
+> Points: `50`
+
+
+== Task submission
+
+Put all the systemd unit files in the `compose` directory:
+
+[,text,subs="+macros"]
+----
+icon:folder[] ...
+├─ icon:folder[] compose
+│  ├─ icon:folder[] migrations
+│  ├─ icon:folder[] src
+│  ├─ ...
+│  └─ icon:file-text[] docker-compose.yml
+└─ icon:folder[] .git
+----
+
+== Task description
+
+You have to create a `docker-compose.yml` file for this project.
+
+Implement 3 services:
+
+- server (Kotlin app)
+- database (PostgreSQL)
+- database starter (Python)
+
+=== Server
+
+Build the source into a jar file (see guides below) and run the server. The server must be available on `localhost:12345` once its service has started.
+
+All environment variables are declared in the `application.properties` file. (See `src/main/resources`)
+
+Add a health check and a restart policy. The health check endpoint is `/actuator`.
+Find appropriate timings: app failures must be detected under 10 seconds and the startup must complete within 30 seconds.
+
+=== Database
+
+The project uses PostgreSQL database. Find the most suitable image on DockerHub.
+
+PostgreSQL stores the data in the `/var/lib/postgresql/data` directory. Create a strong password and do not use default ports. Don't forget the health check!
+
+=== Starter
+
+The `migrations` directory contains scripts which initialise the database. Execute them before the server is started.
+
+== Guides
+
+=== How to build Kotlin
+To build Kotlin we use `maven`, a build system which uses `pom.xml` config files.
+
+Commands:
+
+* `mvn dependency:go-offline -B`  --  download dependencies
+* `mvn package`  --  build app, the results are placed in `target`
+
+TIP: Use `-DskipTests` flag to skip tests
+
+Use Java 21 (Kotlin runs on Java Virtual Machine):
+
+* `openjdk21-jre-headless`  --  runtime environment, used to run the binary
+* `openjdk21-jdk`  --  development kit, used to compile the binary
+
+_These are alpine packages._
+
+=== How to run server
+* `java -jar RESULTING_JAR_FILE`
+
+=== How to run migrations
+* Install dependencies from `requirements.txt`
+* Run the `migrations.py` script
+
+
+== Questions
+* When is it better to use the `always` restart policy and when the `on-failure` one?
+* Why is it important not to use default database ports?
