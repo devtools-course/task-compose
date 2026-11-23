@@ -1,4 +1,4 @@
-package com.gitlab.atpd.progtech.techtasks.compose
+package com.github.devtoolscourse
 
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

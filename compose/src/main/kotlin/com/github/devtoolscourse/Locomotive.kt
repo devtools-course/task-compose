@@ -1,6 +1,5 @@
-package com.gitlab.atpd.progtech.techtasks.compose.entities
+package com.github.devtoolscourse
 
-import com.gitlab.atpd.progtech.techtasks.compose.dtos.LocomotiveDTO
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

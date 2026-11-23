@@ -1,4 +1,4 @@
-package com.gitlab.atpd.progtech.techtasks.compose.dtos
+package com.github.devtoolscourse
 
 data class LocomotiveDTO(
     val name: String,

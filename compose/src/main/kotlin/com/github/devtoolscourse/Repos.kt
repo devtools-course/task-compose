@@ -1,6 +1,5 @@
-package com.gitlab.atpd.progtech.techtasks.compose.repos
+package com.github.devtoolscourse
 
-import com.gitlab.atpd.progtech.techtasks.compose.entities.Locomotive
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface LocomotiveRepository : JpaRepository<Locomotive, Long>
